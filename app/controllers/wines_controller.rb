@@ -2,9 +2,7 @@ class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wines = Wine.all.page(params[:page]).per(3)
-    @q = Wine.all.page(params[:page]).per(3).ransack(params[:q])
-    @wines = @q.result(distinct: true)
+    @wines = Wine.all
   end
 
   def show
