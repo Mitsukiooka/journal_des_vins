@@ -8,7 +8,12 @@
   =f.text_field :taste
   =f.text_field :aroma
   =f.text_area :comments
-  =f.file_field :image
+  =f.file_field :image, direct_upload: true
+  =f.hidden_field :image_blob_id, value: @wine.image.blob_id if @wine.image.attached?
+  -if @wine.image.present?
+    .checkbox.checkbox-primary.m-t-5
+      =f.check_box_without_bootstrap :remove_image_id,{}, @wine.id, false
+      =f.label :remove_image_id, "Image Delete"
   -# =f.collection_select :artist_id, Artist.all, :id, :name, include_blank: true, class: 'form-control'
   -# =f.collection_check_boxes :genre_ids, Genre.all, :id, :name, class: 'form-control'
   =f.submit
