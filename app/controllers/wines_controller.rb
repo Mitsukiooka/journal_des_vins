@@ -47,6 +47,18 @@ class WinesController < ApplicationController
   end
 
   def wine_params
-    params[:wine].permit(:name, :country, :area, :year, :price, :color, :taste, :aroma, :comments, :maker_id, :image)
+    params[:wine].permit(
+      :name, 
+      :country, 
+      :area, 
+      :year, 
+      :price, 
+      :color, 
+      :taste, 
+      :aroma, 
+      :comments, 
+      :maker_id, 
+      :image, 
+      :image_blob_id)
   end
 end

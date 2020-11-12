@@ -1,5 +1,10 @@
 =@maker.name
 =@maker.country
+-if @maker.images.present?
+  -@maker.images.each do |image|
+    =image_tag image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
+-@maker.wines.each do |wine|
+  ="#{wine.name}/#{wine.country}(#{wine.year})"
 
 =link_to "Edit", edit_maker_path(@maker)
 =link_to "Delete", maker_path(@maker), method: :delete, data: {confirm: "Do you want to delete?"}

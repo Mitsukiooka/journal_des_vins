@@ -13,6 +13,7 @@ class MakersController < ApplicationController
   end
 
   def create
+    @maker.images.attach(ActiveStorage::Blob.find(@maker.s_blob_id)) if !@maker.images.attached? && @maker.image_blob_id
     @maker = Maker.new(maker_params)
     if @maker.save
       redirect_to makers_path
@@ -25,6 +26,8 @@ class MakersController < ApplicationController
   end
 
   def update
+    @maker.images.attach(ActiveStorage::Blob.find(@maker.image_blob_id)) if !@maker.images.attached? && @maker.image_blob_id
+    @maker.images.purge if params[:maker][:remove_image_id]
     if @maker.update(maker_params)
       redirect_to makers_path
     else
@@ -44,6 +47,6 @@ class MakersController < ApplicationController
   end
 
   def maker_params
-    params[:maker].permit(:name, :country)
+    params[:maker].permit(:name, :country, :image_blob_id, images:[])
   end
 end

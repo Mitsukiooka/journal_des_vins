@@ -7,6 +7,8 @@
   =f.text_field :color
   =f.text_field :taste
   =f.text_field :aroma
+  =f.text_field :kind
+  =f.collection_select :maker_id, Maker.all, :id, :name, include_blank: true, class: 'form-control'
   =f.text_area :comments
   =f.file_field :image, direct_upload: true
   =f.hidden_field :image_blob_id, value: @wine.image.blob_id if @wine.image.attached?
