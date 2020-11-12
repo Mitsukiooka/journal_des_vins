@@ -1,3 +1,5 @@
-=@makers.each do |maker|
-  =maker.name
+-@makers.each do |maker|
+  =link_to maker.name, maker_path(maker)
   =maker.country
+
+=link_to "Add New Maker", new_maker_path
