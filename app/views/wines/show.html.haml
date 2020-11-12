@@ -1,0 +1,13 @@
+=@wine.name
+=@wine.country
+=@wine.area
+=@wine.year
+=@wine.price
+=@wine.color
+=@wine.taste
+=@wine.aroma
+=@wine.comments
+
+=link_to "Edit", edit_wine_path(@wine)
+=link_to "Delete", wine_path(@wine), method: :delete, data: {confirm: "Do you want to delete?"}
+=link_to "Back", wines_path

@@ -1,3 +1,5 @@
-=@wines.each do |wine|
-  =wine.name
+-@wines.each do |wine|
+  =link_to wine.name, wine_path(wine)
   =wine.country
+
+=link_to "Add New Wine", new_wine_path

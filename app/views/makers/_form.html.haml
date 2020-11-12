@@ -1,0 +1,6 @@
+=bootstrap_form_with model: [@maker], local: true do |f|
+  =f.text_field :name
+  =f.text_field :country
+  -# =f.collection_select :artist_id, Artist.all, :id, :name, include_blank: true, class: 'form-control'
+  -# =f.collection_check_boxes :genre_ids, Genre.all, :id, :name, class: 'form-control'
+  =f.submit
