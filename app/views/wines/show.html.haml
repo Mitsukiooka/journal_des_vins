@@ -2,7 +2,8 @@
 =@wine.country
 =@wine.area
 =@wine.year
-=link_to @wine.maker.name, maker_path(@wine.maker)
+-if @wine.maker.present?
+  =link_to @wine.maker.name, maker_path(@wine.maker)
 =@wine.price
 =@wine.color
 =@wine.taste

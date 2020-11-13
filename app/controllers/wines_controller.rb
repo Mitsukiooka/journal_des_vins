@@ -55,9 +55,11 @@ class WinesController < ApplicationController
       :price, 
       :color, 
       :taste, 
-      :aroma, 
+      :aroma,
+      :kind, 
       :comments, 
-      :maker_id, 
+      :maker_id,
+      :genre_id, 
       :image, 
       :image_blob_id)
   end

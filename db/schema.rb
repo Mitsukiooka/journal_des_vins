@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_133625) do
+ActiveRecord::Schema.define(version: 2020_11_13_090400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2020_11_12_133625) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "kind"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "makers", force: :cascade do |t|
     t.string "name"
     t.string "country"
@@ -57,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_133625) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "maker_id"
     t.string "kind"
+    t.integer "genre_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
