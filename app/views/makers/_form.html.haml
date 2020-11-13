@@ -2,7 +2,7 @@
   =f.text_field :name
   =f.text_field :country
   =f.file_field :images, multiple: true
-  =f.hidden_field :image_blob_id, value: @maker.images.blob_id if @maker.images.attached?
+  -# =f.hidden_field :image_blob_id, value: @maker.images.blob_id if @maker.images.attached?
   -if @maker.images.present?
     .checkbox.checkbox-primary.m-t-5
       =f.check_box_without_bootstrap :remove_image_id,{}, @maker.id, false

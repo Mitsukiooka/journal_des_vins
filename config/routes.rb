@@ -2,4 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :wines
   resources :makers
+
+  get 'help/' => 'help#index'
+  post 'help/submit' => 'help#submit'
+  get 'help/received' => 'help#received'
+  
 end
