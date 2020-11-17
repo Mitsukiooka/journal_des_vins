@@ -1,5 +1,394 @@
--@wines.each do |wine|
-  =link_to wine.name, wine_path(wine)
-  =wine.country
+-# -@wines.each do |wine|
+-#   =link_to wine.name, wine_path(wine)
+-#   =wine.country
 
-=link_to "Add New Wine", new_wine_path
+-# =link_to "Add New Wine", new_wine_path
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title OsteriaX | Home
+    / Favicon
+    %link{:href => "assets/img/favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
+    / Font awesome
+    -# %link{:href => "assets/css/font-awesome.css", :rel => "stylesheet"}/
+    -# / Bootstrap
+    -# %link{:href => "assets/css/bootstrap.css", :rel => "stylesheet"}/
+    -# / Slick slider
+    -# %link{:href => "assets/css/slick.css", :rel => "stylesheet", :type => "text/css"}/
+    -# / Date Picker
+    -# %link{:href => "assets/css/bootstrap-datepicker.css", :rel => "stylesheet", :type => "text/css"}/
+    -# / Gallery Lightbox
+    -# %link{:href => "assets/css/magnific-popup.css", :rel => "stylesheet"}/
+    -# / Theme color
+    -# %link#switcher{:href => "assets/css/default-theme.css", :rel => "stylesheet"}/
+    -# / Main style sheet
+    -# %link{:href => "style.css", :rel => "stylesheet"}/
+    -# / Google Fonts
+    -# / Prata for body
+    -# %link{:href => "https://fonts.googleapis.com/css?family=Prata", :rel => "stylesheet", :type => "text/css"}/
+    -# / Tangerine for small title
+    -# %link{:href => "https://fonts.googleapis.com/css?family=Tangerine", :rel => "stylesheet", :type => "text/css"}/
+    -# / Open Sans for title
+    -# %link{:href => "https://fonts.googleapis.com/css?family=Open+Sans", :rel => "stylesheet", :type => "text/css"}/
+    / HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    / WARNING: Respond.js doesn't work if you view the page via file://
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  %body
+    %section#mu-restaurant-menu
+      .container
+        .row
+          .col-md-12
+            .mu-restaurant-menu-area
+              .mu-title
+                %span.mu-subtitle Discover
+                %h2 OUR MENU
+              .mu-restaurant-menu-content
+                %ul.nav.nav-tabs.mu-restaurant-menu
+                  %li.active
+                    %a{"data-toggle" => "tab", :href => "#breakfast"} Breakfast
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#meals"} Meals
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#snacks"} Snacks
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#desserts"} Desserts
+                  %li
+                    %a{"data-toggle" => "tab", :href => "#drinks"} Drinks
+                / Tab panes
+                .tab-content
+                  #breakfast.tab-pane.fade.in.active
+                    .mu-tab-content-area
+                      .row
+                        .col-md-6
+                          .mu-tab-content-right
+                            %ul.mu-menu-item-nav
+                            -@wines.each do |wine|
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      -if wine.image.present?
+                                        =image_tag wine.image.variant(gravity: :center, resize:"110x110^", crop:"110x110+0+0").processed
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"}=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
+                                    %span.mu-menu-price="#{wine.price}円"
+                                    %p=wine.comments
+                  #meals.tab-pane.fade
+                    .mu-tab-content-area
+                      .row
+                        .col-md-6
+                          .mu-tab-content-left
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-3.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-4.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-3.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                        .col-md-6
+                          .mu-tab-content-right
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-4.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-3.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-4.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                  #snacks.tab-pane.fade
+                    .mu-tab-content-area
+                      .row
+                        .col-md-6
+                          .mu-tab-content-left
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-5.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-6.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-5.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                        .col-md-6
+                          .mu-tab-content-right
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-5.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-6.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-5.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                  #desserts.tab-pane.fade
+                    .mu-tab-content-area
+                      .row
+                        .col-md-6
+                          .mu-tab-content-left
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-7.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-8.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-7.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                        .col-md-6
+                          .mu-tab-content-right
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-8.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-7.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-8.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                  #drinks.tab-pane.fade
+                    .mu-tab-content-area
+                      .row
+                        .col-md-6
+                          .mu-tab-content-left
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-9.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-10.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-9.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                        .col-md-6
+                          .mu-tab-content-right
+                            %ul.mu-menu-item-nav
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-9.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} English Breakfast
+                                    %span.mu-menu-price $15.85
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-10.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Chines Breakfast
+                                    %span.mu-menu-price $11.95
+                                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla aliquid praesentium dolorem commodi illo.
+                              %li
+                                .media
+                                  .media-left
+                                    %a{:href => "#"}
+                                      %img.media-object{:alt => "img", :src => "assets/img/menu/item-9.jpg"}/
+                                  .media-body
+                                    %h4.media-heading
+                                      %a{:href => "#"} Indian Breakfast
+                                    %span.mu-menu-price $15.85
+    %footer#mu-footer
+      .container
+        .row
+          .col-md-12
+            .mu-footer-area
+              .mu-footer-social
+                %a{:href => "#"}
+                  %span.fa.fa-facebook
+                %a{:href => "#"}
+                  %span.fa.fa-twitter
+                %a{:href => "#"}
+                  %span.fa.fa-google-plus
+                %a{:href => "#"}
+                  %span.fa.fa-linkedin
+                %a{:href => "#"}
+                  %span.fa.fa-youtube
+              .mu-footer-copyright
+                %p
+                  \© Copyright
+                  = succeed "." do
+                    %a{:href => "http://markups.io", :rel => "nofollow"} markups.io
+    / End Footer
+    / jQuery library
+    -# %script{:src => "assets/js/jquery.min.js"}
+    -# / Include all compiled plugins (below), or include individual files as needed
+    -# %script{:src => "assets/js/bootstrap.js"}
+    -# / Slick slider
+    -# %script{:src => "assets/js/slick.js", :type => "text/javascript"}
+    -# / Counter
+    -# %script{:src => "assets/js/simple-animated-counter.js", :type => "text/javascript"}
+    -# / Gallery Lightbox
+    -# %script{:src => "assets/js/jquery.magnific-popup.min.js", :type => "text/javascript"}
+    -# / Date Picker
+    -# %script{:src => "assets/js/bootstrap-datepicker.js", :type => "text/javascript"}
+    -# / Ajax contact form
+    -# %script{:src => "assets/js/app.js", :type => "text/javascript"}
+    -# / Custom js
+    -# -# %script{:src => "assets/js/custom.js"}

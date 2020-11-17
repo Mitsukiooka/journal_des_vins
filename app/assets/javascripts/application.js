@@ -3,3 +3,10 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
+//= require js/jquery.min
+//= require js/bootstrap
+//= require js/slick
+//= require js/simple-animated-counter
+//= require js/jquery.magnific-popup.min
+//= require js/bootstrap-datepicker
+//= require js/app
