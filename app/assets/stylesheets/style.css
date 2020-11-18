@@ -608,6 +608,30 @@ img {
   width: 100%;
 }
 
+.mu-restaurant-menu-content .media{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.mu-restaurant-menu-content .media li {
+  list-style: none;
+}
+
+.mu-restaurant-menu-content .media .img { 
+  width: 40%;
+  display: inline-block;
+  image {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+.mu-restaurant-menu-content .media .text {
+  width: 60%;
+  display: inline-block;
+}
+
 .mu-restaurant-menu {
   display: inline-block;
   width: 100%;

@@ -24,5 +24,4 @@ class HelpController < ApplicationController
         :inquiry_body
       )
     end
-
 end
