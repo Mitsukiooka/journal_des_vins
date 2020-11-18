@@ -585,7 +585,7 @@ img {
 }
 
 /*==================
- MENU ITEM SECTION
+MENU ITEM SECTION
 ====================*/
 
 #mu-restaurant-menu {
@@ -621,15 +621,15 @@ img {
 .mu-restaurant-menu-content .media .img { 
   width: 40%;
   display: inline-block;
-  image {
-    width: 350px;
-    height: 350px;
-  }
 }
 
 .mu-restaurant-menu-content .media .text {
   width: 60%;
   display: inline-block;
+}
+
+.mu-restaurant-menu-content .media .text a{
+  color: #FFA500;
 }
 
 .mu-restaurant-menu {
