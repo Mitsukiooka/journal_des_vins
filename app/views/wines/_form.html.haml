@@ -1,22 +1,53 @@
-=bootstrap_form_with model: [@wine], local: true do |f|
-  =f.text_field :name
-  =f.text_field :country
-  =f.text_field :area
-  =f.text_field :year
-  =f.text_field :price
-  =f.text_field :color
-  =f.text_field :taste
-  =f.text_field :aroma
-  =f.text_field :kind
-  =f.collection_select :genre_id, Genre.all, :id, :kind, class: 'form-control'
-  =f.collection_select :maker_id, Maker.all, :id, :name, include_blank: true, class: 'form-control'
-  =f.text_area :comments
-  =f.file_field :image, direct_upload: true
-  =f.hidden_field :image_blob_id, value: @wine.image.blob_id if @wine.image.attached?
-  -if @wine.image.present?
-    .checkbox.checkbox-primary.m-t-5
-      =f.check_box_without_bootstrap :remove_image_id,{}, @wine.id, false
-      =f.label :remove_image_id, "Image Delete"
-  -# =f.collection_select :artist_id, Artist.all, :id, :name, include_blank: true, class: 'form-control'
-  -# =f.collection_check_boxes :genre_ids, Genre.all, :id, :name, class: 'form-control'
-  =f.submit
+%section#mu-reservation
+  .container
+    .row
+      .col-md-12
+        .mu-reservation-area
+          .mu-title
+            %span.mu-subtitle Wine Log
+          .mu-reservation-content
+            .col-md-6
+              .mu-reservation-left
+                =bootstrap_form_with model: [@wine], local: true do |f|
+                  .row
+                    .col-md-12
+                      .form-group
+                        =f.text_field :name
+                    .col-md-12
+                      .form-group
+                        =f.text_field :country
+                    .col-md-12
+                      .form-group
+                        =f.text_field :area
+                    .col-md-12
+                      .form-group
+                        =f.text_field :year
+                    .col-md-12
+                      .form-group
+                        =f.text_field :price
+                    .col-md-12
+                      .form-group
+                        =f.text_field :color
+                    .col-md-12
+                      .form-group
+                        =f.text_field :taste
+                    .col-md-12
+                      .form-group
+                        =f.text_field :aroma
+                    .col-md-12
+                      .form-group
+                        =f.text_field :kind
+                    -# .col-md-12
+                    -#   .form-group
+                    -#     %select.form-control
+                    -#       %option{:value => "0"} How Many?
+                    -#       %option{:value => "1 Person"} 1 Person
+                    -#       %option{:value => "2 People"} 2 People
+                    -#       %option{:value => "3 People"} 3 People
+                    -#       %option{:value => "4 People"} 4 People
+                    -#       %option{:value => "5 People"} 5 People
+                    -#       %option{:value => "6 People"} 6 People
+                    -#       %option{:value => "7 People"} 7 People
+                    -#       %option{:value => "8 People"} 8 People
+                    -#       %option{:value => "9 People"} 9 People
+                    =f.submit
