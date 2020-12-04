@@ -38,8 +38,10 @@
                   %li=@wine.year
                   %li=@wine.price
                 %p=@wine.comments
-    / End About us
-    / Start Counter Section
+  .container
+    =link_to 'Back to index', wines_path 
+    =link_to 'Edit info', edit_wine_path(@wine)
+    =link_to 'Delete this wine', wine_path(@wine), method: :delete, data:{confirm:"Are you sure to delete?"}
 %section#mu-counter
   .mu-counter-overlay
     .container

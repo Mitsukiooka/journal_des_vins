@@ -23,7 +23,15 @@
             =link_to "Wines", wines_path
           %li
             =link_to "Makers", makers_path
-          %li
-            %a{:href => "#mu-reservation"} My Page
+          -if user_signed_in?
+            -# %li
+            -#   =link_to 'My Page'
+            %li
+              =link_to 'Log out', destroy_user_session_path
+          -else
+            %li
+              =link_to 'Log in', new_user_session_path
+            %li
+              =link_to 'Sign up', new_user_registration_path
           %li
             =link_to "Help", help_path

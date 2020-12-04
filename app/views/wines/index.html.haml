@@ -29,3 +29,6 @@
                   %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
                   %span.mu-menu-price="#{wine.price}円"
                   %p=wine.comments
+          .container
+            =link_to 'Add new wine', new_wine_path, class: 'btn submitbtn'
+            =paginate @wines
