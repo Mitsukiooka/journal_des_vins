@@ -30,5 +30,6 @@
                   %span.mu-menu-price="#{wine.price}円"
                   %p=wine.comments
           .container
-            =link_to 'Add new wine', new_wine_path, class: 'btn submitbtn'
+            -if user_signed_in?
+              =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
             =paginate @wines

@@ -1,0 +1,25 @@
+%section#mu-about-us
+  .container
+    .row
+      .col-md-12
+        .mu-about-us-area
+          .mu-title
+            %h1.mu-subtitle Your Profile
+          .row
+            -# .col-md-6
+            -#   .mu-about-us-left
+            -#     -if @profile.present?
+            -#       =image_tag @wine.image.variant(gravity: :center, resize:"600x443^", crop:"600x443+0+0").processed
+            .col-md-6
+              .mu-about-us-right
+              -if @profile.present?
+                %h3=@profile.user_name
+                -# %ul
+                -#   %li=@wine.area
+                -#   %li=@wine.year
+                -#   %li=@wine.price
+                %p=@profile.description
+  .container
+    -if user_signed_in?
+      =link_to 'Edit info', edit_login_profile_path(@profile)
+      =link_to 'Delete Profile', login_profile_path(@profile), method: :delete, data:{confirm:"Are you sure to delete?"}
