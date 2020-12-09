@@ -1,5 +1,39 @@
--@makers.each do |maker|
-  =link_to maker.name, maker_path(maker)
-  =maker.country
+-# -@makers.each do |maker|
+-#   =link_to maker.name, maker_path(maker)
+-#   =maker.country
 
-=link_to "Add New Maker", new_maker_path
+-# =link_to "Add New Maker", new_maker_path
+
+%section#mu-restaurant-menu
+  .container
+    .row
+      .col-md-12
+        .mu-title
+          %span.mu-subtitle Wine Log
+          %h2 Your Makers
+        .mu-restaurant-menu-content
+          -# %ul.nav.nav-tabs.mu-restaurant-menu
+          -#   %li.active
+          -#     %a{"data-toggle" => "tab", :href => "#breakfast"} All
+          -#   %li
+          -#     %a{"data-toggle" => "tab", :href => "#meals"} Red
+          -#   %li
+          -#     %a{"data-toggle" => "tab", :href => "#snacks"} White
+          -#   %li
+          -#     %a{"data-toggle" => "tab", :href => "#desserts"} Sparkling
+          -#   %li
+          -#     %a{"data-toggle" => "tab", :href => "#drinks"} Rose
+          -# / Tab panes
+          %ul
+          -@makers.each do |maker|
+            %li
+              .media
+                -# .img
+                -#   -if maker.image.present?
+                -#     =image_tag maker.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
+                .text
+                  %h2=link_to "#{maker.name}/#{maker.country}", maker_path(maker)
+          .container
+            -if user_signed_in?
+              =link_to 'Add new maker', new_login_maker_path, class: 'btn submitbtn'
+            =paginate @makers

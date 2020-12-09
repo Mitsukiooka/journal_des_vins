@@ -1,11 +1,27 @@
-=@maker.name
-=@maker.country
--if @maker.images.present?
-  -@maker.images.each do |image|
-    =image_tag image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
--@maker.wines.each do |wine|
-  ="#{wine.name}/#{wine.country}(#{wine.year})"
+%section#mu-about-us
+  .container
+    .row
+      .col-md-12
+        .mu-about-us-area
+          .mu-title
+            %h1.mu-subtitle Wine Log
+          .row
+            -# .col-md-6
+            -#   .mu-about-us-left
+            -#     -if @maker.image.present?
+            -#       =image_tag @maker.image.variant(gravity: :center, resize:"600x443^", crop:"600x443+0+0").processed
+            .col-md-6
+              .mu-about-us-right
+                %h3=@maker.name
+                %ul
+                  %li=@maker.country
+            .col-md-6
+              .mu-about-us-right
+                -@maker.wines.each do |wine|
+                  ="#{wine.name}/#{wine.country}(#{wine.year})"
 
-=link_to "Edit", edit_maker_path(@maker)
-=link_to "Delete", maker_path(@maker), method: :delete, data: {confirm: "Do you want to delete?"}
-=link_to "Back", makers_path
+  .container
+    -if user_signed_in?
+      =link_to 'Back to index', makers_path 
+      =link_to 'Edit info', edit_login_maker_path(@maker)
+      =link_to 'Delete this maker', login_maker_path(@maker), method: :delete, data:{confirm:"Are you sure to delete?"}

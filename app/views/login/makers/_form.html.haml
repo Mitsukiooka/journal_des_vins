@@ -1,0 +1,26 @@
+.container
+  .row
+    .col-md-12
+      .mu-reservation-area
+        .mu-title
+          %span.mu-subtitle Wine Log
+        .mu-reservation-content
+          .col-md-6
+            .mu-reservation-left
+              =bootstrap_form_with model: [@maker], local: true do |f|
+                .row
+                  .col-md-12
+                    .form-group
+                      =f.text_field :name
+                  .col-md-12
+                    .form-group
+                      =f.text_field :country
+                  .col-md-12
+                    .form-group
+                      =f.file_field :images, multiple: true
+                      -if @maker.images.present?
+                        .checkbox.checkbox-primary.m-t-5
+                          =f.check_box_without_bootstrap :remove_image_id,{}, @maker.id, false
+                          =f.label :remove_image_id, "Image Delete"
+                          -# =f.hidden_field :image_blob_id, value: @maker.images.blob_id if @maker.images.attached?
+                  =f.submit

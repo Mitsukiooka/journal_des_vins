@@ -2,7 +2,7 @@ class MakersController < ApplicationController
   before_action :set_maker, only: [:show, :edit, :update, :destroy]
 
   def index
-    @makers = Maker.all
+    @makers = Maker.all.page(params[:page]).per(6)
   end
 
   def show

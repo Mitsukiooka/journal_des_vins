@@ -1,19 +1,18 @@
-%section#mu-reservation
-  .container
-    .row
-      .col-md-12
-        .mu-reservation-area
-          .mu-title
-            %span.mu-subtitle Wine Log
-          .mu-reservation-content
-            .col-md-6
-              .mu-reservation-left
-                =bootstrap_form_with model: [:login, @profile], local: true do |f|
-                  .row
-                    .col-md-12
-                      .form-group
-                        =f.text_field :user_name
-                    .col-md-12
-                      .form-group
-                        =f.text_area :description, class: 'autosize'
-                    =f.submit
+.container
+  .row
+    .col-md-12
+      .mu-reservation-area
+        .mu-title
+          %span.mu-subtitle Wine Log
+        .mu-reservation-content
+          .col-md-6
+            .mu-reservation-left
+              =bootstrap_form_with model: [:login, @profile], local: true do |f|
+                .row
+                  .col-md-12
+                    .form-group
+                      =f.text_field :user_name
+                  .col-md-12
+                    .form-group
+                      =f.text_area :description, class: 'autosize'
+                  =f.submit
