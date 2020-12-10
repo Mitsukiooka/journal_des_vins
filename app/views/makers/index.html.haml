@@ -24,25 +24,25 @@
             %span.mu-subtitle Your Makers
           .mu-chef-content
             %ul.mu-chef-nav
-            -@makers.each do |maker|
-              %li
-                .mu-single-chef
-                  %figure.mu-single-chef-img
-                    -if maker.images.present?
-                      -image = maker.images.first 
-                      =image_tag image.variant(gravity: :center, resize:"265x275^", crop:"265x275+0+0").processed
-                  .mu-single-chef-info
-                    %h4=link_to "#{maker.name}", maker_path(maker)
-                    %span="#{maker.country}"
-                  .mu-single-chef-social
-                    %a{:href => "#"}
-                      %i.fa.fa-facebook
-                    %a{:href => "#"}
-                      %i.fa.fa-twitter
-                    %a{:href => "#"}
-                      %i.fa.fa-google-plus
-                    %a{:href => "#"}
-                      %i.fa.fa-linkedin
+              -@makers.each do |maker|
+                %li
+                  .mu-single-chef
+                    %figure.mu-single-chef-img
+                      -if maker.images.present?
+                        -image = maker.images.first 
+                        =image_tag image.variant(gravity: :center, resize:"265x275^", crop:"265x275+0+0").processed
+                    .mu-single-chef-info
+                      %h4=link_to "#{maker.name}", maker_path(maker)
+                      %span="#{maker.country}"
+                    .mu-single-chef-social
+                      %a{:href => "#"}
+                        %i.fa.fa-facebook
+                      %a{:href => "#"}
+                        %i.fa.fa-twitter
+                      %a{:href => "#"}
+                        %i.fa.fa-google-plus
+                      %a{:href => "#"}
+                        %i.fa.fa-linkedin
   .container
     -if user_signed_in?
       =link_to 'Add new maker', new_login_maker_path, class: 'btn submitbtn'
