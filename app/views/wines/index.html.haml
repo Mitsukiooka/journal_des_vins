@@ -1,35 +1,31 @@
 %section#mu-restaurant-menu
-  .container
-    .row
-      .col-md-12
-        .mu-title
-          %span.mu-subtitle Wine Log
-          %h2 Your Wines
-        .mu-restaurant-menu-content
-          %ul.nav.nav-tabs.mu-restaurant-menu
-            %li.active
-              %a{"data-toggle" => "tab", :href => "#breakfast"} All
-            %li
-              %a{"data-toggle" => "tab", :href => "#meals"} Red
-            %li
-              %a{"data-toggle" => "tab", :href => "#snacks"} White
-            %li
-              %a{"data-toggle" => "tab", :href => "#desserts"} Sparkling
-            %li
-              %a{"data-toggle" => "tab", :href => "#drinks"} Rose
-          / Tab panes
-          %ul
-          -@wines.each do |wine|
-            %li
-              .media
-                .img
-                  -if wine.image.present?
-                    =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
-                .text
-                  %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
-                  %span.mu-menu-price="#{wine.price}円"
-                  %p=wine.comments
-          .container
-            -if user_signed_in?
-              =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
-            =paginate @wines
+  .mu-title
+    %span.mu-subtitle Your Wines
+  .mu-restaurant-menu-content
+    %ul.nav.nav-tabs.mu-restaurant-menu
+      %li.active
+        %a{"data-toggle" => "tab", :href => "#all"} All
+      %li
+        %a{"data-toggle" => "tab", :href => "#red"} Red
+      %li
+        %a{"data-toggle" => "tab", :href => "#white"} White
+      %li
+        %a{"data-toggle" => "tab", :href => "#sparkling"} Sparkling
+      %li
+        %a{"data-toggle" => "tab", :href => "#rose"} Rose
+    / Tab panes
+    %ul
+    -@wines.each do |wine|
+      %li
+        .media
+          .img
+            -if wine.image.present?
+              =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
+          .text
+            %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
+            %span.mu-menu-price="#{wine.price}円"
+            %p=wine.comments
+    .container
+      -if user_signed_in?
+        =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
+      =paginate @wines

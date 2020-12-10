@@ -6,10 +6,11 @@
           .mu-title
             %h1.mu-subtitle Wine Log
           .row
-            -# .col-md-6
-            -#   .mu-about-us-left
-            -#     -if @maker.image.present?
-            -#       =image_tag @maker.image.variant(gravity: :center, resize:"600x443^", crop:"600x443+0+0").processed
+            .col-md-6
+              .mu-about-us-left
+                -if @maker.images.present?
+                  -@maker.images.each do |image|
+                    =image_tag image.variant(gravity: :center, resize:"265x275^", crop:"265x275+0+0").processed
             .col-md-6
               .mu-about-us-right
                 %h3=@maker.name
@@ -18,7 +19,7 @@
             .col-md-6
               .mu-about-us-right
                 -@maker.wines.each do |wine|
-                  ="#{wine.name}/#{wine.country}(#{wine.year})"
+                  =link_to "#{wine.name}/#{wine.country}(#{wine.year})", wine_path(wine)
 
   .container
     -if user_signed_in?

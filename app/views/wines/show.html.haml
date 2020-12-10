@@ -18,53 +18,94 @@
 
 
 %section#mu-about-us
-  .container
+  .mu-about-us-area
+    .mu-title
+      %h1.mu-subtitle=@wine.name
     .row
-      .col-md-12
-        .mu-about-us-area
-          .mu-title
-            %h1.mu-subtitle Wine Log
-          .row
-            .col-md-6
-              .mu-about-us-left
-                -if @wine.image.present?
-                  =image_tag @wine.image.variant(gravity: :center, resize:"600x443^", crop:"600x443+0+0").processed
-            .col-md-6
-              .mu-about-us-right
-                %h3=@wine.name
-                %ul
-                  %li=@wine.country
-                  %li=@wine.area
-                  %li=@wine.year
-                  %li=@wine.price
-                %p=@wine.comments
-  .container
-    -if user_signed_in?
-      =link_to 'Back to index', wines_path 
-      =link_to 'Edit info', edit_login_wine_path(@wine)
-      =link_to 'Delete this wine', login_wine_path(@wine), method: :delete, data:{confirm:"Are you sure to delete?"}
-%section#mu-counter
-  .mu-counter-overlay
-    .container
-      .row
-        .col-md-12
-          .mu-counter-area
-            %ul.mu-counter-nav
-              %li.col-md-3.col-sm-3.col-xs-12
-                .mu-single-counter
-                  %span Color
-                  %h3
-                    %span.counter-value{"data-count" => "150"}=@wine.color
-                    %sup +
-              %li.col-md-3.col-sm-3.col-xs-12
-                .mu-single-counter
-                  %span Taste
-                  %h3
-                    %span.counter-value{"data-count" => "60"}=@wine.taste
-                    %sup +
-              %li.col-md-3.col-sm-3.col-xs-12
-                .mu-single-counter
-                  %span Aroma
-                  %h3
-                    %span.counter-value{"data-count" => "45"}=@wine.aroma
-                    %sup +
+      .col-md-6
+        .mu-about-us-left
+          -if @wine.image.present?
+            =image_tag @wine.image.variant(gravity: :center, resize:"600x443^", crop:"600x443+0+0").processed
+      .col-md-6
+        .mu-about-us-right
+          %h3=@wine.name
+          %ul
+            %li=@wine.country
+            %li=@wine.area
+            %li=@wine.year
+            %li=@wine.price
+          %p=@wine.comments
+        .mu-counter-area
+          %ul.mu-counter-nav
+            %li.col-md-3.col-sm-3.col-xs-12
+              .mu-single-counter
+                %span Color
+                %h3
+                  %span.counter-value{"data-count" => "150"}=@wine.color
+                  %sup +
+            %li.col-md-3.col-sm-3.col-xs-12
+              .mu-single-counter
+                %span Taste
+                %h3
+                  %span.counter-value{"data-count" => "60"}=@wine.taste
+                  %sup +
+            %li.col-md-3.col-sm-3.col-xs-12
+              .mu-single-counter
+                %span Aroma
+                %h3
+                  %span.counter-value{"data-count" => "45"}=@wine.aroma
+                  %sup +
+%section#mu-map
+  -# %h2 gmap
+  -# %input#address{:type => "textbox", :value => "GeekSalon"}/
+  -# %input{:onclick => "codeAddress()", :type => "button", :value => "Encode"}/
+  -# #display 何かが表示される、、、、！
+  #map
+  :css
+    #map {
+      height: 450px;
+      width: 100%;
+      display: inline;
+      float: left;
+    }
+  :javascript
+    let map
+    
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+    
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 40.7828, lng:-73.9653},
+        zoom: 12,
+      });
+    
+      marker = new google.maps.Marker({
+        position:  {lat: 40.7828, lng:-73.9653},
+        map: map
+      });
+    }
+    let geocoder
+
+    function codeAddress(){
+    let inputAddress = document.getElementById('address').value;
+
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+    map.setCenter(results[0].geometry.location);
+    var marker = new google.maps.Marker({
+    map: map,
+    position: results[0].geometry.location
+    });
+    display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+    alert('該当する結果がありませんでした：' + status);
+    }
+    });
+    }
+  %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.googlemap_apikey}&callback=initMap"}
+.container
+  -if user_signed_in?
+    =link_to 'Back to index', wines_path 
+    =link_to 'Edit info', edit_login_wine_path(@wine)
+    =link_to 'Delete this wine', login_wine_path(@wine), method: :delete, data:{confirm:"Are you sure to delete?"}
+  
