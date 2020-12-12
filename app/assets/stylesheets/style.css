@@ -488,6 +488,10 @@ section {
   width: 100%;
 }
 
+.mu-about-us-left img {
+  margin-left: 10%;
+}
+
 .mu-title {
   display: inline;
   float: left;

@@ -56,10 +56,10 @@
                   %span.counter-value{"data-count" => "45"}=@wine.aroma
                   %sup +
 %section#mu-map
-  -# %h2 gmap
-  -# %input#address{:type => "textbox", :value => "GeekSalon"}/
-  -# %input{:onclick => "codeAddress()", :type => "button", :value => "Encode"}/
-  -# #display 何かが表示される、、、、！
+  %h2 Wine Maker map
+  %input#address{:type => "textbox", :value => "#{@wine.area}"}/
+  %input{:onclick => "codeAddress()", :type => "button", :value => "Search"}/
+  #display 生産地を地図で確認
   #map
   :css
     #map {
@@ -75,12 +75,12 @@
       geocoder = new google.maps.Geocoder()
     
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 40.7828, lng:-73.9653},
-        zoom: 12,
+        center: {lat: 35.6661309, lng:139.7844453},
+        zoom: 15,
       });
     
       marker = new google.maps.Marker({
-        position:  {lat: 40.7828, lng:-73.9653},
+        position:  {lat: 35.6661309, lng:139.7844453},
         map: map
       });
     }

@@ -90,6 +90,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enumerize (2.3.1)
+      activesupport (>= 3.2)
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -271,6 +273,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+  enumerize
   font-awesome-sass
   haml-rails (~> 2.0)
   image_processing (~> 1.2)

@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models: 
+      wine: ワイン
+    attributes:
+      wine: 
+        name: ワイン名
+        country: 生産国
+        area: 生産エリア
+        year: 生産年
+        price: 値段
+        color: 色の評価
+        taste: 味の評価
+        aroma: 香りの評価
+        comments: 総評
+        kind: ワインジャンル
