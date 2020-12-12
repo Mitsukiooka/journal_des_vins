@@ -38,6 +38,9 @@
                       =f.text_field :kind
                   .col-md-12
                     .form-group
+                      =f.collection_select :maker_id, Maker.all, :id, :name, include_blank: true, class: 'form-control '
+                  .col-md-12
+                    .form-group
                       =f.file_field :images
                       -if @wine.image.present?
                         .checkbox.checkbox-primary.m-t-5
