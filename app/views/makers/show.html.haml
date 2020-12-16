@@ -20,6 +20,7 @@
               .mu-about-us-right
                 -@maker.wines.each do |wine|
                   =link_to "#{wine.name}/#{wine.country}(#{wine.year})", wine_path(wine)
+                  %br
 
   .container
     -if user_signed_in?

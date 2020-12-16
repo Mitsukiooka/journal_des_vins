@@ -1,85 +1,60 @@
 %section#mu-restaurant-menu
-  .mu-title
-    %span.mu-subtitle Your Wines
-  .mu-restaurant-menu-content
-    %ul.nav.nav-tabs.mu-restaurant-menu
-      %li
-        %a{"data-toggle" => "tab", :href => "#all"} All
-      %li.active
-        %a{"data-toggle" => "tab", :href => "#red"} Red
-      %li
-        %a{"data-toggle" => "tab", :href => "#white"} White
-      %li
-        %a{"data-toggle" => "tab", :href => "#sparkling"} Sparkling
-      %li
-        %a{"data-toggle" => "tab", :href => "#rose"} Rose
-    / Tab panes
-    .tab-content
-      #all.tab-pane.fade.in
-        %ul
-        -@wines.each do |wine|
-          %li
-            .media
-              .img
-                -if wine.image.present?
-                  =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
-              .text
-                %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
-                %span.mu-menu-price="#{wine.price}円"
-                %p=wine.comments
-    .tab-content
-      #red.tab-pane.fade.in.active
-        %ul
-        -@wines.red.each do |wine|
-          %li
-            .media
-              .img
-                -if wine.image.present?
-                  =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
-              .text
-                %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
-                %span.mu-menu-price="#{wine.price}円"
-                %p=wine.comments
-    .tab-content
-      #white.tab-pane.fade.in
-        %ul
-        -@wines.white.each do |wine|
-          %li
-            .media
-              .img
-                -if wine.image.present?
-                  =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
-              .text
-                %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
-                %span.mu-menu-price="#{wine.price}円"
-                %p=wine.comments
-    .tab-content
-      #sparkling.tab-pane.fade.in
-        %ul
-        -@wines.sparkling.each do |wine|
-          %li
-            .media
-              .img
-                -if wine.image.present?
-                  =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
-              .text
-                %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
-                %span.mu-menu-price="#{wine.price}円"
-                %p=wine.comments
-    .tab-content
-      #rose.tab-pane.fade.in
-        %ul
-        -@wines.rose.each do |wine|
-          %li
-            .media
-              .img
-                -if wine.image.present?
-                  =image_tag wine.image.variant(gravity: :center, resize:"350x350^", crop:"350x350+0+0").processed
-              .text
-                %h2=link_to "#{wine.name}/#{wine.year}", wine_path(wine)
-                %span.mu-menu-price="#{wine.price}円"
-                %p=wine.comments
-    .container
-      -if user_signed_in?
-        =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
-      =paginate @wines
+  .container
+    .row
+      .col-md-12
+        .mu-restaurant-menu-area
+          .mu-title
+            %span.mu-subtitle Discover
+            %h2 YOUR WINE
+          .mu-restaurant-menu-content
+            %ul.nav.nav-tabs.mu-restaurant-menu
+              %li.active
+                %a{"data-toggle" => "tab", :href => "#all"} All
+              %li
+                %a{"data-toggle" => "tab", :href => "#red"} Red
+              %li
+                %a{"data-toggle" => "tab", :href => "#white"} White
+              %li
+                %a{"data-toggle" => "tab", :href => "#sparkling"} Sparkling
+              %li
+                %a{"data-toggle" => "tab", :href => "#rose"} Rose
+            / Tab panes
+            .tab-content
+              #all.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content-left
+                        =render 'all'
+            .tab-content
+              #red.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content-left
+                        =render 'red'
+            .tab-content
+              #white.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content-left
+                        =render 'white'
+            .tab-content
+              #sparkling.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content-left
+                        =render 'sparkling'
+            .tab-content
+              #rose.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content-left
+                        =render 'rose'
+  .container
+    -if user_signed_in?
+      =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
+    =paginate @wines                     

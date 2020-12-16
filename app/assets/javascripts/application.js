@@ -6,3 +6,4 @@
 //= require bootstrap-datepicker
 //= require app
 //= require custom
+//= require common

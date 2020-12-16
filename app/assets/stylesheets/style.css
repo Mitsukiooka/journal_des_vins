@@ -27,12 +27,12 @@
 */
 
 body {
+  background-color: #ffffff;
   font-family: "Prata", serif;
   color: #333333;
   font-size: 15px;
   overflow-x: hidden;
   line-height: 24px;
-  height: 100%;
 }
 
 .no-padding {
@@ -78,11 +78,6 @@ img {
   max-width: 100%;
 }
 
-section {
-  background: url("../img/wine_bg_f.jpg") top right no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-}
 
 .mu-readmore-btn {
   background-color: #fff;
@@ -488,15 +483,11 @@ section {
   width: 100%;
 }
 
-.mu-about-us-left img {
-  margin-left: 10%;
-}
-
 .mu-title {
   display: inline;
   float: left;
   width: 100%;
-  margin: 20px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -617,30 +608,6 @@ MENU ITEM SECTION
   width: 100%;
 }
 
-.mu-restaurant-menu-content .media{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  margin-left: 10%;
-}
-
-.mu-restaurant-menu-content .media li {
-  list-style: none;
-}
-
-.mu-restaurant-menu-content .media .img { 
-  width: 40%;
-  display: inline-block;
-}
-
-.mu-restaurant-menu-content .media .text {
-  width: 60%;
-  display: inline-block;
-}
-
-.mu-restaurant-menu-content .media .text a{
-  color: #FFA500;
-}
 
 .mu-restaurant-menu {
   display: inline-block;
