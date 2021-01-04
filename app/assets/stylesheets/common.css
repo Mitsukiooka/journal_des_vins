@@ -9,17 +9,13 @@
 }
 
 .mu-restaurant-menu-content .media .img { 
-  width: 40%;
+  width: 100%;
   display: inline-block;
-}
-
-.mu-restaurant-menu-content .media .img image {
-  width: 350px;
-  height: 350px;
+  margin-left: 10%;
 }
 
 .mu-restaurant-menu-content .media .text {
-  width: 60%;
+  width: 100%;
   display: inline-block;
 }
 
