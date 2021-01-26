@@ -2,7 +2,7 @@ class WinesController < ApplicationController
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wines = Wine.all.page(params[:page]).per(6)
+    @wines = Wine.all
   end
 
   def show

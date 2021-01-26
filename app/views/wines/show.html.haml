@@ -55,6 +55,12 @@
                 %h3
                   %span.counter-value{"data-count" => "45"}=@wine.aroma
                   %sup +
+  .container
+    -if user_signed_in?
+      =link_to 'Back to index', wines_path 
+      =link_to 'Edit info', edit_login_wine_path(@wine)
+      =link_to 'Delete this wine', login_wine_path(@wine), method: :delete, data:{confirm:"Are you sure to delete?"}
+  
 %section#mu-map
   %h2 Wine Maker map
   %input#address{:type => "textbox", :value => "#{@wine.area}"}/
@@ -103,9 +109,3 @@
     });
     }
   %script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.googlemap_apikey}&callback=initMap"}
-.container
-  -if user_signed_in?
-    =link_to 'Back to index', wines_path 
-    =link_to 'Edit info', edit_login_wine_path(@wine)
-    =link_to 'Delete this wine', login_wine_path(@wine), method: :delete, data:{confirm:"Are you sure to delete?"}
-  

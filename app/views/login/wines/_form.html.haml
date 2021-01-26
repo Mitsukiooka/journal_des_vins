@@ -41,7 +41,7 @@
                       =f.collection_select :maker_id, Maker.all, :id, :name, include_blank: true, class: 'form-control '
                   .col-md-12
                     .form-group
-                      =f.file_field :images
+                      =f.file_field :image
                       -if @wine.image.present?
                         .checkbox.checkbox-primary.m-t-5
                           =f.check_box_without_bootstrap :remove_image_id,{}, @wine.id, false
