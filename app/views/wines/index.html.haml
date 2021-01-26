@@ -29,3 +29,4 @@
   .container
     -if user_signed_in?
       =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
+    =paginate @wines
