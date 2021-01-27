@@ -8,15 +8,15 @@
             %h2 YOUR WINE
           .mu-restaurant-menu-content
             %ul.nav.nav-tabs.mu-restaurant-menu
-              %li.btn
+              %li.btnIndex
                 %a{"data-toggle" => "tab", :href => "#all"} All
-              %li.btn
+              %li.btnIndex
                 %a{"data-toggle" => "tab", :href => "#red"} Red
-              %li.btn
+              %li.btnIndex
                 %a{"data-toggle" => "tab", :href => "#white"} White
-              %li.btn
+              %li.btnIndex
                 %a{"data-toggle" => "tab", :href => "#sparkling"} Sparkling
-              %li.btn
+              %li.btnIndex
                 %a{"data-toggle" => "tab", :href => "#rose"} Rose
             / Tab panes
             .tab-content
@@ -26,6 +26,34 @@
                     .col-md-6
                       .mu-tab-content
                         =render 'all'
+            .tab-content
+              #red.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content
+                        =render 'red'
+            .tab-content
+              #white.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content
+                        =render 'white'
+            .tab-content
+              #sparkling.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content
+                        =render 'sparkling'
+            .tab-content
+              #rose.tab-pane.fade.in.active
+                .mu-tab-content-area
+                  .row
+                    .col-md-6
+                      .mu-tab-content
+                        =render 'rose'
   .container
     -if user_signed_in?
       =link_to 'Add new wine', new_login_wine_path, class: 'btn submitbtn'
