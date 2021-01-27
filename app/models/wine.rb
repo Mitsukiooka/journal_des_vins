@@ -1,5 +1,7 @@
 class Wine < ApplicationRecord
 
+  include Enumerizable
+  
   has_one_attached :image
   belongs_to :maker, optional: true
   belongs_to :genre

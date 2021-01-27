@@ -1,0 +1,8 @@
+ja:
+  enumerize:
+    wine:
+      kind:
+        red: 赤ワイン
+        white: 白ワイン
+        rose: ロゼワイン
+        sparkling: スパークリングワイン

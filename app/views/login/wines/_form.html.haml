@@ -35,7 +35,7 @@
                       =f.text_field :aroma
                   .col-md-12
                     .form-group
-                      =f.text_field :kind
+                      =f.collection_select :kind, Wine.kind.options, :last, :first
                   .col-md-12
                     .form-group
                       =f.collection_select :maker_id, Maker.all, :id, :name, include_blank: true, class: 'form-control '
